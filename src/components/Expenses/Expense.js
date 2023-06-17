@@ -1,6 +1,6 @@
 import ExpenseItem from "./ExpenceItem"
 import "./Expense.css"
-function Expenses({expenses}){
+const Expenses = ({expenses}) =>{
     return <div>
         <ExpenseItem 
       title = {expenses[0].title}
