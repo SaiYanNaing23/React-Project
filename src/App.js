@@ -23,9 +23,13 @@ const expenses = [
   },
   ];
 const App = () => {
+  const newExpenseDataId = (expenseData) =>{
+    console.log("This is in th App.js");
+    console.log(expenseData);
+  }
   return (
     <Card className="expenses">
-      <NewExpense></NewExpense>
+      <NewExpense addExpenseData = {newExpenseDataId}></NewExpense>
       <Expenses expenses={expenses}></Expenses>
     </Card>
 

@@ -18,7 +18,6 @@ const ExpenseItem = (props) => {
             <ExpenseTitle title = {title}></ExpenseTitle>
             <ExpenseAmount amount = {props.amount}></ExpenseAmount>
             </div>
-            <button onClick={handlerClick}>Check</button>
         </Card>
     )
 }

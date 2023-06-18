@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./ExpenseForm.css"
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     const [title,setTitle]=useState("");
     const [amount,setAmount]=useState("");
     const [dateVal,setDateVal]=useState("");
@@ -9,7 +9,7 @@ const ExpenseForm = () => {
     //     amount : "",
     //     dateVal : "",
     // })
-    console.log(title,amount,dateVal);
+// t,    console.log(title,amoundateVal);
 
     const titleHandler = (e)=>{
         setTitle(e.target.value);
@@ -34,27 +34,30 @@ const ExpenseForm = () => {
     const submitHandler = (e)=>{
         e.preventDefault();
         const expense ={
-              id: "e1",
               title : title,
               amount : amount,
               date: new Date(dateVal),
             }
-        console.log(expense);
+        // console.log(expense);
+        props.onSaveDataExpense(expense)
+        setTitle("");
+        setAmount("");
+        setDateVal("");
     }
     return (
         <form onSubmit={submitHandler}>
     <div className="new-expense__controls">
         <div className="new-expense__control">
             <label>Title</label>
-            <input type="text" onChange={titleHandler}></input>
+            <input type="text" value={title} onChange={titleHandler}></input>
         </div>
         <div className="new-expense__control">
             <label>Amount</label>
-            <input type="number" min={0.01} step={0.01} onChange={amountHandler}></input>
+            <input type="number" min={0.01} value={amount} step={0.01} onChange={amountHandler}></input>
         </div>
         <div className="new-expense__control">
             <label>Date</label>
-            <input type="date" min={2019-1-1} step={2023-12-31} onChange={dateHandler}></input>
+            <input type="date" min={2019-1-1} value={dateVal} step={2023-12-31} onChange={dateHandler}></input>
         </div>
     </div>
     <div className="new-expense__actions">
