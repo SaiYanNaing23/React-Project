@@ -1,7 +1,8 @@
 import NewExpense from "./components/NewExpense/NewExpense";
 import Card from "./components/UI/Card";
 import Expenses from "./components/Expenses/Expense";
-const expenses = [
+import { useState } from "react";
+const Dummy_Expense = [
   {
     id: "e1",
     title: "Toilet Paper",
@@ -23,14 +24,15 @@ const expenses = [
   },
   ];
 const App = () => {
+  const [expenses,setExpenses] = useState(Dummy_Expense);
   const newExpenseDataId = (expenseData) =>{
-    console.log("This is in th App.js");
+    setExpenses((expenses) => [expenseData,...expenses])
     console.log(expenseData);
   }
   return (
     <Card className="expenses">
       <NewExpense addExpenseData = {newExpenseDataId}></NewExpense>
-      <Expenses expenses={expenses}></Expenses>
+      <Expenses items={expenses}></Expenses>
     </Card>
 
   );

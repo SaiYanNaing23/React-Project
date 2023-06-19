@@ -1,8 +1,23 @@
 import ExpenseItem from "./ExpenceItem"
+import ExpenseFilter from "./ExpenseFilter"
 import "./Expense.css"
-const Expenses = ({expenses}) =>{
+import { useState } from "react"
+const Expenses = (props) =>{
+  const [filterYear,setFilterYear] = useState("")
+  const optionValHandler = (optiondata)=>{
+    setFilterYear(optiondata);
+  }
     return <div>
-        <ExpenseItem 
+      <ExpenseFilter select = {filterYear} addOptionVal = {optionValHandler}></ExpenseFilter>
+      {props.items.map((expense) => (
+            <ExpenseItem
+              key={expense.id}
+              title={expense.title}
+              amount={expense.amount}
+              date={expense.date}
+            />
+          ))}
+        {/* <ExpenseItem 
       title = {expenses[0].title}
       amount = {expenses[0].amount}
       date = {expenses[0].date}
@@ -21,7 +36,7 @@ const Expenses = ({expenses}) =>{
       title = {expenses[3].title}
       amount = {expenses[3].amount}
       date = {expenses[3].date}
-      ></ExpenseItem> 
+      ></ExpenseItem>  */}
     </div>
 }
 export default Expenses;
